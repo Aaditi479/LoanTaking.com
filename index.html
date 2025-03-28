@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal LOAN</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <form autocomplete="off" method="post" name="google-sheet">
+            <h3 style="text-align: center;">Personal Loan</h3>
+            <input type="text" placeholder="Enter your name" name="Name" >
+            <input type="text" placeholder="Enter your email" name="email" >
+            <input type="text" placeholder="Enter your Phone no." name="Phone_No" >
+            <input type="text" placeholder="Enter your age" name="Age" >
+            
+            <select name="Loan_Amount">
+                <option value="Not selected">How much LOAN do you want</option>
+                <option value="₹1000">₹1000</option>
+                <option value="₹2000">₹2000</option>
+                <option value="₹3000">₹3000</option>
+                <option value="₹4000">₹4000</option>
+                <option value="₹5000">₹5000</option>
+                <option value="₹6000">₹6000</option>
+                <option value="₹7000">₹7000</option>
+            </select>
+            <textarea rows="4" placeholder="Why Do You want LOAN" name="LoanBecause"></textarea>
+
+            <label><b>Gender</b></label><br/>
+        
+            <pre>
+<h4>Male</h4><input type="radio" placehlder="Gender" name="gender" value="Male">
+<h4>Female</h4><input type="radio" placehlder="Gender" name="gender" value="Female">
+            </pre>
+        <button type="submit" name="submit">Submit</button>
+
+        </form>
+    </div>
+
+
+        <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzdhoRUsxxMNY5bahNxlNH3M_BfnquE0PVSypbwqEHj9qNsyHtX90aX1CmVEiZW7hmfGg/exec'
+        const form = document.forms['google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("Your Message Has been sent to Anjali! We will inform you under 5 days."))
+            .catch(error => console.error('Error!', error.message))
+        })
+        </script>
+
+
+</body>
+</html>
